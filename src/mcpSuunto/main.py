@@ -1,5 +1,13 @@
+from mcpSuunto.duckdb.database import get_connection
+
+
 def main():
-    print("Hello")
+    connection = get_connection()
+
+    print("Database connected!")
+
+    connection.close()
+
 
 if __name__ == "__main__":
     main()
