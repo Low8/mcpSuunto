@@ -1,4 +1,4 @@
-CREATE TABLE activities (
+CREATE TABLE IF NOT EXISTS activities (
     activity_id VARCHAR PRIMARY KEY,
 
     source_file VARCHAR NOT NULL,
@@ -51,11 +51,13 @@ CREATE TABLE activities (
     estimated_vo2_max DOUBLE,
 
     feeling INTEGER,
+    avg_ngp_m_s DOUBLE,
+    hills DOUBLE,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE records (
+CREATE TABLE IF NOT EXISTS records (
     activity_id VARCHAR NOT NULL,
     timestamp TIMESTAMP NOT NULL,
 
@@ -77,11 +79,13 @@ CREATE TABLE records (
     temperature_c DOUBLE,
 
     vertical_speed_m_s DOUBLE,
+    ngp_m_s DOUBLE,
+    grade_pct DOUBLE,
 
     PRIMARY KEY (activity_id, timestamp)
 );
 
-CREATE TABLE laps (
+CREATE TABLE IF NOT EXISTS laps (
     lap_id BIGINT PRIMARY KEY,
 
     activity_id VARCHAR NOT NULL,
@@ -128,7 +132,7 @@ CREATE TABLE laps (
     avg_swolf DOUBLE
 );
 
-CREATE TABLE intervals (
+CREATE TABLE IF NOT EXISTS intervals (
     interval_id BIGINT PRIMARY KEY,
 
     activity_id VARCHAR NOT NULL,
@@ -173,7 +177,7 @@ CREATE TABLE intervals (
     descent_m DOUBLE
 );
 
-CREATE TABLE developer_fields (
+CREATE TABLE IF NOT EXISTS developer_fields (
     developer_field_id BIGINT PRIMARY KEY,
 
     activity_id VARCHAR NOT NULL,
@@ -194,7 +198,7 @@ CREATE TABLE developer_fields (
     value_text VARCHAR
 );
 
-CREATE TABLE lengths (
+CREATE TABLE IF NOT EXISTS lengths (
     length_id BIGINT PRIMARY KEY,
 
     activity_id VARCHAR NOT NULL,
@@ -221,7 +225,7 @@ CREATE TABLE lengths (
     avg_swolf DOUBLE
 );
 
-CREATE TABLE events (
+CREATE TABLE IF NOT EXISTS events (
     event_id BIGINT PRIMARY KEY,
 
     activity_id VARCHAR NOT NULL,
