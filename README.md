@@ -51,3 +51,53 @@ Pour utiliser d'autres dossiers :
 ```text
 uv run mcpSuunto --inbox chemin/vers/inbox --processed chemin/vers/processed
 ```
+
+## Serveur MCP
+
+Le serveur MCP expose les données DuckDB sans modifier le parsing ou
+l'ingestion :
+
+```powershell
+uv run mcpSuunto-server
+```
+
+Le transport par défaut est `stdio`, compatible avec Claude Desktop et MCP
+Inspector. Pour lancer Inspector avec le serveur :
+
+```powershell
+npx @modelcontextprotocol/inspector uv run mcpSuunto-server
+```
+
+Les tools disponibles sont :
+
+- `list_activities`
+- `get_activity`
+- `search_activities`
+- `get_training_history`
+- `get_training_load`
+- `get_performance_trends`
+- `get_intervals`
+- `query_activity_records`
+- `compare_activities`
+- `compare_intervals`
+- `get_similar_activities`
+- `get_personal_bests`
+- `get_recent_training_context`
+
+Exemple de configuration Claude Desktop :
+
+```json
+{
+  "mcpServers": {
+    "suunto": {
+      "command": "C:\\Users\\Louis\\.local\\bin\\uv.exe",
+      "args": [
+        "run",
+        "--directory",
+        "C:\\Users\\Louis\\Code\\projet\\mcpSuunto",
+        "mcpSuunto-server"
+      ]
+    }
+  }
+}
+```
