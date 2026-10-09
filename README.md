@@ -169,9 +169,10 @@ atomiquement, sans créer de copie partielle dans la base.
 ### Actualiser la base quand Claude Desktop utilise le MCP
 
 Si Claude Desktop utilise actuellement le serveur MCP, il peut verrouiller
-son exécutable et empêcher `uv` de le mettre à jour. Le script fourni arrête
-uniquement les processus `mcpSuunto-server`, lance l'import, puis se termine.
-Il ne ferme pas Claude Desktop et ne touche pas aux autres processus.
+son exécutable et empêcher `uv` de le mettre à jour. Le script fourni arrête,
+si nécessaire, uniquement les processus `mcpSuunto-server`, lance l'import,
+puis se termine. Il ne ferme pas Claude Desktop et ne touche pas aux autres
+processus.
 
 Depuis la racine du projet, lancer :
 
@@ -185,9 +186,15 @@ Pour conserver également les fichiers dans OneDrive :
 .\scripts\refresh-suunto.ps1 --keep-onedrive
 ```
 
-Claude Desktop pourra relancer automatiquement le serveur MCP lors de sa
-prochaine utilisation. Si PowerShell bloque l'exécution des scripts, autoriser
-uniquement cette session puis relancer la commande :
+Si le script a arrêté un serveur MCP utilisé par Claude Desktop, redémarrer
+Claude Desktop après l'import pour établir une nouvelle connexion MCP. Si
+aucun serveur MCP n'était actif, ou si Claude s'est reconnecté tout seul, ce
+redémarrage n'est pas nécessaire. Pour fermer complètement Claude Desktop,
+utiliser **Quitter** depuis son icône dans la zone de notification Windows,
+puis le relancer.
+
+Si PowerShell bloque l'exécution des scripts, autoriser uniquement cette
+session puis relancer la commande :
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
