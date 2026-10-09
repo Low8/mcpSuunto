@@ -7,9 +7,10 @@ from typing import Any
 
 import duckdb
 
+from mcpSuunto.config import AppConfig
 from mcpSuunto.models import ParsedActivity
 
-DB_PATH = Path("data/database/suunto.duckdb")
+DB_PATH = AppConfig.load().database_path
 SCHEMA_PATH = Path(__file__).with_name("schema.sql")
 
 

@@ -22,7 +22,20 @@ uv run mcpSuunto --keep-onedrive
 
 Les erreurs sont affichées dans la console et enregistrées dans
 `data/logs/ingestion.log`, avec le fichier concerné et l'étape en échec.
-Le chemin source peut être changé avec `--onedrive`.
+Les chemins variables sont configurés dans `config/config.toml`. Crée ce
+fichier à partir de `config/config.example.toml` et adapte notamment
+`onedrive_dir`. Le fichier local n'est pas versionné.
+
+Pour une surcharge ponctuelle, les options CLI restent disponibles :
+
+```powershell
+uv run mcpSuunto --onedrive "D:\Suunto\fit"
+```
+
+Les variables d'environnement `SUUNTO_ONEDRIVE_DIR`,
+`SUUNTO_INBOX_DIR`, `SUUNTO_PROCESSED_DIR`, `SUUNTO_DATABASE_PATH` et
+`SUUNTO_LOG_FILE` peuvent aussi remplacer les valeurs du fichier de
+configuration.
 
 Le pipeline parse, valide avec Pydantic, commit la transaction DuckDB, puis
 déplace seulement les fichiers réussis vers `data/processed`. Un fichier en

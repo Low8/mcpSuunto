@@ -1,0 +1,8 @@
+# Copy this file to config.toml and adapt the paths to your computer.
+
+[paths]
+onedrive_dir = "C:/Users/YourName/OneDrive/suunto/fit"
+inbox_dir = "data/inbox"
+processed_dir = "data/processed"
+database_path = "data/database/suunto.duckdb"
+log_file = "data/logs/ingestion.log"
