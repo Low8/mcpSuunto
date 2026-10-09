@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Louison Masson", email = "louison.masson@gmail.com" }
+    { name = "mcpSuunto contributors" }
 ]
 requires-python = ">=3.13"
 dependencies = [

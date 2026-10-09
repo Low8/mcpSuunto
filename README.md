@@ -12,7 +12,7 @@ uv run mcpSuunto
 ```
 
 Par défaut, la commande lit le dossier OneDrive synchronisé
-`C:\Users\Louis\OneDrive\suunto\fit`, copie les fichiers `.fit` dans
+`~/OneDrive/suunto/fit`, copie les fichiers `.fit` dans
 `data/inbox`, puis les supprime du dossier source uniquement après une copie
 réussie. Pour conserver les fichiers dans OneDrive :
 
@@ -103,14 +103,18 @@ Exemple de configuration Claude Desktop :
 {
   "mcpServers": {
     "suunto": {
-      "command": "C:\\Users\\Louis\\.local\\bin\\uv.exe",
+      "command": "<chemin-vers-uv>",
       "args": [
         "run",
         "--directory",
-        "C:\\Users\\Louis\\Code\\projet\\mcpSuunto",
+        "<chemin-vers-le-projet-mcpSuunto>",
         "mcpSuunto-server"
       ]
     }
   }
 }
 ```
+
+Les chemins ci-dessus sont des exemples génériques : chaque utilisateur doit
+les remplacer par ses propres chemins locaux. Les données FIT, la base DuckDB,
+les logs et les exports d'inspection sont volontairement exclus du dépôt.

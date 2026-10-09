@@ -38,6 +38,10 @@ build/
 data/inbox/
 data/processed/
 data/database/
+data/inspection/
+*.fit
+*.fit.gz
+*.fit.zip
 
 # Temporary files
 *.tmp
@@ -47,3 +51,4 @@ data/database/
 data/inbox/
 data/processed/
 data/database/
+data/inspection/

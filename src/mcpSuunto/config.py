@@ -35,7 +35,7 @@ class AppConfig:
             return result if result.is_absolute() else PROJECT_ROOT / result
 
         return cls(
-            onedrive_dir=get_path("onedrive_dir", r"C:\Users\Louis\OneDrive\suunto\fit"),
+            onedrive_dir=get_path("onedrive_dir", "~/OneDrive/suunto/fit"),
             inbox_dir=get_path("inbox_dir", "data/inbox"),
             processed_dir=get_path("processed_dir", "data/processed"),
             database_path=get_path("database_path", "data/database/suunto.duckdb"),
