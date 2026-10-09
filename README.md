@@ -166,6 +166,34 @@ uv run mcpSuunto
 L'import est rejouable. Une activité déjà connue est remplacée
 atomiquement, sans créer de copie partielle dans la base.
 
+### Actualiser la base quand Claude Desktop utilise le MCP
+
+Si Claude Desktop utilise actuellement le serveur MCP, il peut verrouiller
+son exécutable et empêcher `uv` de le mettre à jour. Le script fourni arrête
+uniquement les processus `mcpSuunto-server`, lance l'import, puis se termine.
+Il ne ferme pas Claude Desktop et ne touche pas aux autres processus.
+
+Depuis la racine du projet, lancer :
+
+```powershell
+.\scripts\refresh-suunto.ps1
+```
+
+Pour conserver également les fichiers dans OneDrive :
+
+```powershell
+.\scripts\refresh-suunto.ps1 --keep-onedrive
+```
+
+Claude Desktop pourra relancer automatiquement le serveur MCP lors de sa
+prochaine utilisation. Si PowerShell bloque l'exécution des scripts, autoriser
+uniquement cette session puis relancer la commande :
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\scripts\refresh-suunto.ps1
+```
+
 ## Connecter Claude Desktop
 
 ### Important : Desktop, pas Claude Web
